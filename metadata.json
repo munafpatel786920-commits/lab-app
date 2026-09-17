@@ -1,0 +1,8 @@
+{
+  "name": "Remix Pathology Lab Management App",
+  "description": "A comprehensive, responsive, and secure digital platform for managing diagnostic labs. Features specialized panels for Administrators, Receptionists, Technicians, Pathologists, and Patients. Includes billing, real-time sample tracking, inventory management, doctor references, dynamic test range validations, and smart AI-powered test report summaries.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

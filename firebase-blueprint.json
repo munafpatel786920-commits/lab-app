@@ -1,0 +1,130 @@
+{
+  "entities": {
+    "patients": {
+      "title": "Patient",
+      "description": "Lab patients records",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "age": { "type": "number" },
+        "gender": { "type": "string" },
+        "mobile": { "type": "string" },
+        "email": { "type": "string" },
+        "address": { "type": "string" },
+        "doctorRef": { "type": "string" },
+        "appointmentDate": { "type": "string" },
+        "sampleCollectionDate": { "type": "string" },
+        "photoUrl": { "type": "string" },
+        "createdDate": { "type": "string" }
+      },
+      "required": ["id", "name", "mobile"]
+    },
+    "reports": {
+      "title": "TestReport",
+      "description": "Lab test reports",
+      "properties": {
+        "reportNo": { "type": "string" },
+        "patientId": { "type": "string" },
+        "patientName": { "type": "string" },
+        "testId": { "type": "string" },
+        "testName": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["reportNo", "patientId", "testName"]
+    },
+    "invoices": {
+      "title": "Invoice",
+      "description": "Billing invoices",
+      "properties": {
+        "invoiceNo": { "type": "string" },
+        "patientId": { "type": "string" },
+        "patientName": { "type": "string" },
+        "total": { "type": "number" },
+        "paymentStatus": { "type": "string" }
+      },
+      "required": ["invoiceNo", "patientId"]
+    },
+    "appointments": {
+      "title": "Appointment",
+      "description": "Patient appointments",
+      "properties": {
+        "id": { "type": "string" },
+        "patientName": { "type": "string" },
+        "mobile": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["id", "patientName"]
+    },
+    "homeVisits": {
+      "title": "HomeCollectionVisit",
+      "description": "Home sample collection visits",
+      "properties": {
+        "id": { "type": "string" },
+        "patientName": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["id"]
+    },
+    "inventory": {
+      "title": "InventoryItem",
+      "description": "Reagents and test kits",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "quantity": { "type": "number" }
+      },
+      "required": ["id", "name"]
+    },
+    "staff": {
+      "title": "StaffMember",
+      "description": "Lab staff members",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "role": { "type": "string" }
+      },
+      "required": ["id", "name"]
+    },
+    "expenses": {
+      "title": "Expense",
+      "description": "Lab expenses",
+      "properties": {
+        "id": { "type": "string" },
+        "category": { "type": "string" },
+        "amount": { "type": "number" }
+      },
+      "required": ["id", "amount"]
+    },
+    "tests": {
+      "title": "TestTemplate",
+      "description": "Test catalog templates",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "price": { "type": "number" }
+      },
+      "required": ["id", "name"]
+    },
+    "settings": {
+      "title": "LabSettings",
+      "description": "Lab settings configuration",
+      "properties": {
+        "labName": { "type": "string" }
+      },
+      "required": ["labName"]
+    },
+    "users": {
+      "title": "UserAccount",
+      "description": "User login accounts and credentials",
+      "properties": {
+        "id": { "type": "string" },
+        "username": { "type": "string" },
+        "password": { "type": "string" },
+        "name": { "type": "string" },
+        "role": { "type": "string" },
+        "email": { "type": "string" }
+      },
+      "required": ["id", "username", "password", "role"]
+    }
+  }
+}
