@@ -1,8 +1,66 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
+    
+    // Default deny catch-all
     match /{document=**} {
-      allow read, write: if true;
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // Activation Keys collection (Super Admin manages, anyone can read to validate key during registration)
+    match /activationKeys/{keyId} {
+      allow read: if true;
+      allow write: if isSignedIn();
+    }
+
+    // Labs / Tenants collection
+    match /labs/{tenantId} {
+      allow read: if isSignedIn();
+      allow write: if isSignedIn();
+    }
+
+    // Multi-tenant collections (patients, reports, invoices, appointments, homeVisits, inventory, staff, expenses, tests, settings, users)
+    match /patients/{docId} {
+      allow read, write: if isSignedIn();
+    }
+    match /reports/{docId} {
+      allow read, write: if isSignedIn();
+    }
+    match /invoices/{docId} {
+      allow read, write: if isSignedIn();
+    }
+    match /appointments/{docId} {
+      allow read, write: if isSignedIn();
+    }
+    match /homeVisits/{docId} {
+      allow read, write: if isSignedIn();
+    }
+    match /inventory/{docId} {
+      allow read, write: if isSignedIn();
+    }
+    match /staff/{docId} {
+      allow read, write: if isSignedIn();
+    }
+    match /expenses/{docId} {
+      allow read, write: if isSignedIn();
+    }
+    match /tests/{docId} {
+      allow read, write: if isSignedIn();
+    }
+    match /settings/{docId} {
+      allow read, write: if isSignedIn();
+    }
+    match /users/{docId} {
+      allow read, write: if isSignedIn();
     }
   }
 }
